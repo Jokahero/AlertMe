@@ -25,11 +25,6 @@ public:
 	virtual ~AAlert() = 0;
 
 	/**
-	 * \brief It is time !
-	 */
-	virtual void raise() = 0;
-
-	/**
 	 * \brief Sets the raising date of this alert
 	 *
 	 * \param date	Date
@@ -79,6 +74,12 @@ protected:
 	
 	bool 			_active;		///< \brief Is the alert active
 	bool			_repetitive;	///< \brief Is the alert repetitive
+
+private slots:
+	/**
+	 * \brief It is time !
+	 */
+	virtual void raise() = 0;
 };
 
 inline void AAlert::setDate(QDateTime date) {
