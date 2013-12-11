@@ -18,9 +18,11 @@ MOC_DIR = gen
 QMAKE_CLEAN = gen/* ui/include/* bin/*
 
 SOURCES += src/Main.cpp \
-    src/AAlert.cpp
+    src/AAlert.cpp \
+	src/AlertManager.cpp
 
 HEADERS  += \ 
-    inc/AAlert.hpp
+    inc/AAlert.hpp \
+	inc/AlertManager.hpp
 
 FORMS    +=
