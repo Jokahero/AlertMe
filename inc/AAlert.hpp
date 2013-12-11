@@ -25,6 +25,11 @@ public:
 	virtual ~AAlert() = 0;
 
 	/**
+	 * \brief Starts the alert's timer
+	 */
+	virtual void start() = 0;
+
+	/**
 	 * \brief Sets the raising date of this alert
 	 *
 	 * \param date	Date
