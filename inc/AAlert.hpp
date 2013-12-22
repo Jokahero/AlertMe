@@ -22,7 +22,7 @@ public:
 	/**
 	 * \brief Destructor
 	 */
-	virtual ~AAlert() = 0;
+	virtual ~AAlert();
 
 	/**
 	 * \brief Starts the alert's timer
