@@ -2,6 +2,7 @@
 #define __AALERT_HPP__
 
 #include <QDateTime>
+#include <QObject>
 #include <QString>
 
 /**
@@ -9,7 +10,9 @@
  *
  * \brief Abstract class for alerts
  */
-class AAlert {
+class AAlert : public QObject {
+	Q_OBJECT
+
 public:
 	/**
 	 * \brief Constructor
