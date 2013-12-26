@@ -1,7 +1,5 @@
 #include "inc/AlertManager.hpp"
 
-#include <algorithm>
-
 AlertManager::AlertManager() {}
 
 AlertManager::~AlertManager() {
