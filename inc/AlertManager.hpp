@@ -1,7 +1,7 @@
 #ifndef __ALERT_MANAGER_HPP__
 #define __ALERT_MANAGER_HPP__
 
-#include "inc/AAlert.hpp"
+#include "AAlert.hpp"
 
 #include <QVector>
 
