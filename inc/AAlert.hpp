@@ -83,7 +83,7 @@ protected:
 	bool 			_active;		///< \brief Is the alert active
 	bool			_repetitive;	///< \brief Is the alert repetitive
 
-private slots:
+public slots:
 	/**
 	 * \brief It is time !
 	 */
