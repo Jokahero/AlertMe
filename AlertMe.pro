@@ -15,6 +15,8 @@ UI_DIR = ui/include
 OBJECTS_DIR = gen 
 MOC_DIR = gen 
 
+QMAKE_CXXFLAGS += -Werror
+
 QMAKE_CLEAN = gen/* ui/include/* bin/*
 
 SOURCES += src/Main.cpp \
