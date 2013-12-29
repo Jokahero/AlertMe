@@ -20,6 +20,8 @@ class TickTimer : public AAlert {
 	protected:
 		unsigned int	_interval;
 		QTime			_startTime;
+
+	private:
 		QTimer*			_timer;
 };
 
