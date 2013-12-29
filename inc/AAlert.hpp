@@ -74,6 +74,30 @@ public:
 	 */
 	inline bool isActive();
 
+	/**
+	 * \brief Returns the name of the alert
+	 *
+	 * \return the name of the alert
+	 */
+	inline QString name() const;
+
+	/**
+	 * \brief Returns the description of the alert
+	 *
+	 * \return the description of the alert
+	 */
+	inline QString description() const;
+
+	/**
+	 * \brief Sets the name of the alert
+	 */
+	inline void setName(const QString &name);
+
+	/**
+	 * \brief Sets the description of the alert
+	 */
+	inline void setDescription(const QString &description);
+
 protected:
 	QString			_name;			///< \brief Name of the alert
 	QString			_description;	///< \brief Description of the alert
@@ -112,6 +136,22 @@ inline void AAlert::setActive(bool active) {
 
 inline bool AAlert::isActive() {
 	return _active;
+}
+
+inline QString AAlert::name() const {
+	return _name;
+}
+
+inline QString AAlert::description() const {
+	return _description;
+}
+
+inline void AAlert::setName(const QString &name) {
+	_name = name;
+}
+
+inline void AAlert::setDescription(const QString &description) {
+	_description = description;
 }
 
 #endif // __AALERT_HPP__
