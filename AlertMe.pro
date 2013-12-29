@@ -21,10 +21,12 @@ QMAKE_CLEAN = gen/* ui/include/* bin/*
 
 SOURCES += src/Main.cpp \
     src/AAlert.cpp \
-	src/AlertManager.cpp
+	src/AlertManager.cpp \
+	src/TickTimer.cpp
 
 HEADERS  += \ 
     inc/AAlert.hpp \
-	inc/AlertManager.hpp
+	inc/AlertManager.hpp \
+	inc/TickTimer.hpp
 
 FORMS    +=
