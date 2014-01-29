@@ -30,3 +30,5 @@ HEADERS  += \
 	inc/TickTimer.hpp
 
 FORMS    +=
+
+RESOURCES += res/default_sounds.qrc
