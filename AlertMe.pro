@@ -4,6 +4,7 @@
 
 CONFIG += qt
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT += multimedia
 
 TARGET = AlertMe
 TEMPLATE = app
@@ -22,11 +23,15 @@ QMAKE_CLEAN = gen/* ui/include/* bin/*
 SOURCES += src/Main.cpp \
     src/core/AAlert.cpp \
 	src/core/AlertManager.cpp \
+	src/core/Sound.cpp \
 	src/core/TickTimer.cpp
 
 HEADERS  += \ 
     inc/core/AAlert.hpp \
 	inc/core/AlertManager.hpp \
+	inc/core/Sound.hpp \
 	inc/core/TickTimer.hpp
 
 FORMS    +=
+
+RESOURCES += res/default_sounds.qrc

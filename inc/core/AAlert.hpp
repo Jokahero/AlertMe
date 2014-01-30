@@ -1,6 +1,8 @@
 #ifndef __AALERT_HPP__
 #define __AALERT_HPP__
 
+#include "inc/Sound.hpp"
+
 #include <QDateTime>
 #include <QObject>
 #include <QString>
@@ -31,6 +33,13 @@ public:
 	 * \brief Starts the alert's timer
 	 */
 	virtual void start() = 0;
+
+	/**
+	 * \brief Sets the raising sound for this alert
+	 *
+	 * \param sound Sound to play on raise
+	 */
+	virtual void setSound(Sound *sound);
 
 	/**
 	 * \brief Sets the raising date of this alert
@@ -106,6 +115,8 @@ protected:
 	
 	bool 			_active;		///< \brief Is the alert active
 	bool			_repetitive;	///< \brief Is the alert repetitive
+
+	Sound			*_sound;		///< \brief Sound to play on raise
 
 public slots:
 	/**

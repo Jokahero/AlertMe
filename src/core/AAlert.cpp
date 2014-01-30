@@ -2,6 +2,12 @@
 
 AAlert::AAlert(QString name, QString description) : _name(name), _description(description) {
 	_active = true;
+	_sound = NULL;
 }
 
 AAlert::~AAlert() {}
+
+void AAlert::setSound(Sound *sound) {
+	_sound = sound;
+}
+
