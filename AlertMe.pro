@@ -20,13 +20,13 @@ QMAKE_CXXFLAGS += -Werror
 QMAKE_CLEAN = gen/* ui/include/* bin/*
 
 SOURCES += src/Main.cpp \
-    src/AAlert.cpp \
-	src/AlertManager.cpp \
-	src/TickTimer.cpp
+    src/core/AAlert.cpp \
+	src/core/AlertManager.cpp \
+	src/core/TickTimer.cpp
 
 HEADERS  += \ 
-    inc/AAlert.hpp \
-	inc/AlertManager.hpp \
-	inc/TickTimer.hpp
+    inc/core/AAlert.hpp \
+	inc/core/AlertManager.hpp \
+	inc/core/TickTimer.hpp
 
 FORMS    +=

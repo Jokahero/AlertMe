@@ -1,7 +1,7 @@
 #include <QApplication>
 
-#include "inc/AlertManager.hpp"
-#include "inc/TickTimer.hpp"
+#include "core/AlertManager.hpp"
+#include "core/TickTimer.hpp"
 
 int main(int argc, char** argv) {
     QApplication application(argc, argv);

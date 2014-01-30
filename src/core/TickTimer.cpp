@@ -1,4 +1,4 @@
-#include "inc/TickTimer.hpp"
+#include "core/TickTimer.hpp"
 
 #include <QTimer>
 
