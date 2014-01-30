@@ -24,3 +24,9 @@ void TickTimer::start() {
 void TickTimer::raise() {
 	std::cout << "[alert] " << _name.toStdString() << " : RAISE (" << QTime::currentTime().toString().toStdString() << ")" <<  std::endl;
 }
+
+void TickTimer::setSound(Sound *sound) {
+	AAlert::setSound(sound);
+	if (_sound)
+		connect(_timer, SIGNAL(timeout()), _sound, SLOT(play()));
+}
