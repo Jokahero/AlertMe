@@ -2,10 +2,11 @@
 #define __SOUND_HPP__
 
 class QAudioOutput;
+class QSound;
 
 #include <QFile>
 
-class Sound : public QObject{
+class Sound : public QObject {
 public:
 	Sound(const QString &label, const QString &path);
 	~Sound();
@@ -17,8 +18,7 @@ public slots:
 
 private:
 	QString			_label;
-	QAudioOutput*	_output;
-	QFile			_audioFile;
+	QSound			*_sound;
 };
 
 #endif // __SOUND_HPP__
