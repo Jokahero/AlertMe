@@ -4,9 +4,11 @@
 class QAudioOutput;
 class QSound;
 
-#include <QFile>
+#include <QObject>
 
 class Sound : public QObject {
+	Q_OBJECT
+
 public:
 	Sound(const QString &label, const QString &path);
 	~Sound();
