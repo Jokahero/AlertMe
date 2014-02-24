@@ -9,7 +9,7 @@ int main(int argc, char** argv) {
 
 	AlertManager *manager = new AlertManager();
 
-	TickTimer *myAlert = new TickTimer("My alert", "Description of my alert", 45);
+	TickTimer *myAlert = new TickTimer("My alert", "Description of my alert", 900);
 	myAlert->setSound(new Sound("Test sound", "://sounds/poke.wav"));
 
 	manager->addAlert(myAlert);
