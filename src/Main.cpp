@@ -1,5 +1,9 @@
 #include <QApplication>
 
+#include <QSystemTrayIcon>
+
+#include <iostream>
+
 #include "core/AlertManager.hpp"
 #include "core/Sound.hpp"
 #include "core/TickTimer.hpp"
@@ -15,5 +19,11 @@ int main(int argc, char** argv) {
 	manager->addAlert(myAlert);
 	manager->start();
 
+    std::cout << (QSystemTrayIcon::isSystemTrayAvailable() ? "true" : "false") << std::endl;
+    
+    QSystemTrayIcon *icon = new QSystemTrayIcon(QIcon(":///icons/trayIcon.png"));
+    icon->show();
+    icon->showMessage("Hey !", "Wake up !");
+    
     return application.exec();
 }
