@@ -36,4 +36,5 @@ HEADERS  += \
 
 FORMS    +=
 
-RESOURCES += res/default_sounds.qrc
+RESOURCES += res/default_sounds.qrc \
+    res/images.qrc
