@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
 
     std::cout << (QSystemTrayIcon::isSystemTrayAvailable() ? "true" : "false") << std::endl;
     
-    QSystemTrayIcon *icon = new QSystemTrayIcon(QIcon(":///icons/trayIcon.png"));
+	QSystemTrayIcon *icon = new QSystemTrayIcon(QIcon(":///icons/images/logo.png"));
     icon->show();
     icon->showMessage("Hey !", "Wake up !");
     
