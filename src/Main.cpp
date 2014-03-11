@@ -5,7 +5,7 @@
 #include <iostream>
 
 #include "core/AlertManager.hpp"
-#include "core/Sound.hpp"
+#include "core/features/Sound.hpp"
 #include "core/TickTimer.hpp"
 
 int main(int argc, char** argv) {

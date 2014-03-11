@@ -1,7 +1,7 @@
 #ifndef __AALERT_HPP__
 #define __AALERT_HPP__
 
-#include "core/Sound.hpp"
+#include "core/features/Sound.hpp"
 
 #include <QDateTime>
 #include <QObject>

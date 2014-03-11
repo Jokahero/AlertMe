@@ -25,13 +25,13 @@ QMAKE_CLEAN = gen/* ui/include/* bin/*
 SOURCES += src/Main.cpp \
     src/core/AAlert.cpp \
 	src/core/AlertManager.cpp \
-	src/core/Sound.cpp \
+        src/core/features/Sound.cpp \
 	src/core/TickTimer.cpp
 
 HEADERS  += \ 
     inc/core/AAlert.hpp \
 	inc/core/AlertManager.hpp \
-	inc/core/Sound.hpp \
+        inc/core/features/Sound.hpp \
 	inc/core/TickTimer.hpp \
         inc/core/features/AFeature.hpp
 

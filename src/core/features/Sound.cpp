@@ -1,4 +1,4 @@
-#include "core/Sound.hpp"
+#include "core/features/Sound.hpp"
 
 #include <QSound>
 
