@@ -32,7 +32,8 @@ HEADERS  += \
     inc/core/AAlert.hpp \
 	inc/core/AlertManager.hpp \
 	inc/core/Sound.hpp \
-	inc/core/TickTimer.hpp
+	inc/core/TickTimer.hpp \
+        inc/core/features/AFeature.hpp
 
 FORMS    +=
 
