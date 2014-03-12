@@ -39,7 +39,7 @@ public:
 	 *
 	 * \param sound Sound to play on raise
 	 */
-	virtual void setSound(Sound *sound);
+	virtual void setSound(Feature::Sound *sound);
 
 	/**
 	 * \brief Sets the raising date of this alert
@@ -116,7 +116,7 @@ protected:
 	bool 			_active;		///< \brief Is the alert active
 	bool			_repetitive;	///< \brief Is the alert repetitive
 
-	Sound			*_sound;		///< \brief Sound to play on raise
+	Feature::Sound	*_sound;		///< \brief Sound to play on raise
 
 public slots:
 	/**

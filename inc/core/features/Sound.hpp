@@ -1,26 +1,29 @@
 #ifndef __SOUND_HPP__
 #define __SOUND_HPP__
 
+#include "AFeature.hpp"
+
 class QAudioOutput;
 class QSound;
 
-#include <QObject>
+namespace Feature {
+	class Sound : public AFeature {
 
-class Sound : public QObject {
-	Q_OBJECT
+	public:
+		Sound(const QString &label, const QString &path);
+		~Sound();
 
-public:
-	Sound(const QString &label, const QString &path);
-	~Sound();
+		bool initialize();
 
-	bool initialize();
+		virtual QString getName() const;
 
-public slots:
-	void play();
+		virtual void play();
 
-private:
-	QString			_label;
-	QSound			*_sound;
-};
+	private:
+		QString			_label;
+		QSound			*_sound;
 
+		static const QString NAME;
+	};
+}
 #endif // __SOUND_HPP__

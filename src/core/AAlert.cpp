@@ -7,7 +7,7 @@ AAlert::AAlert(QString name, QString description) : _name(name), _description(de
 
 AAlert::~AAlert() {}
 
-void AAlert::setSound(Sound *sound) {
+void AAlert::setSound(Feature::Sound *sound) {
 	_sound = sound;
 }
 
