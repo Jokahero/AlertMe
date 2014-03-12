@@ -4,7 +4,7 @@
 #include <QString>
 
 namespace Feature {
-	/*
+	/**
 	 * \class AFeature
 	 * \brief Feature abstract class
 	 *
@@ -12,14 +12,14 @@ namespace Feature {
 	 */
 	class AFeature {
 	public:
-		/*
+		/**
 		 * \brief Returns the feature's name
 		 *
 		 * \return the name of the feature
 		 */
 		virtual QString getName() const = 0;
 
-		/*
+		/**
 		 * \brief Plays the feature
 		 *
 		 * Process the feature's specific behaviour
@@ -27,4 +27,4 @@ namespace Feature {
 		virtual void play() = 0;
 	};
 }
-#endif // AFEATURE_HPP
+#endif // __AFEATURE_HPP__

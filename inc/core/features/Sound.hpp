@@ -7,7 +7,7 @@ class QAudioOutput;
 class QSound;
 
 namespace Feature {
-	/*
+	/**
 	 * \class Sound
 	 * \brief Sound feature
 	 * 
@@ -16,7 +16,7 @@ namespace Feature {
 	class Sound : public AFeature {
 
 	public:
-		/*
+		/**
 		 * \brief Constructor
 		 *
 		 * \param label	Sound label
@@ -24,7 +24,7 @@ namespace Feature {
 		 */
 		Sound(const QString &label, const QString &path);
 		
-		/*
+		/**
 		 * \brief Destructor
 		 */
 		~Sound();
