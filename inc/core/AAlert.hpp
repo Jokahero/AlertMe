@@ -186,4 +186,8 @@ inline void AAlert::setDescription(const QString &description) {
 	_description = description;
 }
 
+inline QVector<Feature::AFeature*> AAlert::getFeatures() const {
+	return _features;
+}
+
 #endif // __AALERT_HPP__
