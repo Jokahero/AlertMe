@@ -22,12 +22,6 @@ void TickTimer::start() {
 }
 
 void TickTimer::raise() {
+	AAlert::raise();
 	std::cout << "[alert] " << _name.toStdString() << " : RAISE (" << QTime::currentTime().toString().toStdString() << ")" <<  std::endl;
-}
-
-void TickTimer::setSound(Feature::Sound *sound) {
-	AAlert::setSound(sound);
-	// TODO : Sound won't be played via signal anymore
-	/*if (_sound)
-		connect(_timer, SIGNAL(timeout()), _sound, SLOT(play()));*/
 }

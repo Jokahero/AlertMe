@@ -1,10 +1,13 @@
 #ifndef __AALERT_HPP__
 #define __AALERT_HPP__
 
-#include "core/features/Sound.hpp"
+namespace Feature {
+	class AFeature;
+}
 
 #include <QDateTime>
 #include <QObject>
+#include <QVector>
 #include <QString>
 
 /**
@@ -33,13 +36,6 @@ public:
 	 * \brief Starts the alert's timer
 	 */
 	virtual void start() = 0;
-
-	/**
-	 * \brief Sets the raising sound for this alert
-	 *
-	 * \param sound Sound to play on raise
-	 */
-	virtual void setSound(Feature::Sound *sound);
 
 	/**
 	 * \brief Sets the raising date of this alert
@@ -107,22 +103,47 @@ public:
 	 */
 	inline void setDescription(const QString &description);
 
+	/**
+	 * \brief Add a feature to the alert
+	 *
+	 * \param feature Feature to add
+	 *
+	 * \return true if the feature has been correctly added, false otherwise
+	 */
+	bool addFeature(Feature::AFeature *feature);
+
+	/**
+	 * \brief Asks the alarmert if it has a feature
+	 *
+	 * \param name	Feature name
+	 *
+	 * \return true if the alarm has the feature, false otherwise
+	 */
+	bool hasFeature(const QString &name);
+
+	/**
+	 * \brief Returns the list of features for this alert
+	 *
+	 * \return the feature list of the alert
+	 */
+	inline QVector<Feature::AFeature*> getFeatures() const;
+
 protected:
-	QString			_name;			///< \brief Name of the alert
-	QString			_description;	///< \brief Description of the alert
+	QString						_name;			///< \brief Name of the alert
+	QString						_description;	///< \brief Description of the alert
 
-	QDateTime		_date;			///< \brief Raising date
+	QDateTime					_date;			///< \brief Raising date
 	
-	bool 			_active;		///< \brief Is the alert active
-	bool			_repetitive;	///< \brief Is the alert repetitive
+	bool						_active;		///< \brief Is the alert active
+	bool						_repetitive;	///< \brief Is the alert repetitive
 
-	Feature::Sound	*_sound;		///< \brief Sound to play on raise
+	QVector<Feature::AFeature*>	_features;		///< \brief List of features for this alert
 
 public slots:
 	/**
 	 * \brief It is time !
 	 */
-	virtual void raise() = 0;
+	virtual void raise();
 };
 
 inline void AAlert::setDate(QDateTime date) {

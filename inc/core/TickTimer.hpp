@@ -31,8 +31,6 @@ public:
 
 	virtual void start();
 
-	virtual void setSound(Feature::Sound *sound);
-
 	public slots:
 	virtual void raise();
 
