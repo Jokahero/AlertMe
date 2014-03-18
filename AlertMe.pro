@@ -26,14 +26,16 @@ SOURCES += src/Main.cpp \
     src/core/AAlert.cpp \
 	src/core/AlertManager.cpp \
         src/core/features/Sound.cpp \
-	src/core/TickTimer.cpp
+	src/core/TickTimer.cpp \
+    src/core/features/Notification.cpp \
 
 HEADERS  += \ 
     inc/core/AAlert.hpp \
 	inc/core/AlertManager.hpp \
         inc/core/features/Sound.hpp \
 	inc/core/TickTimer.hpp \
-        inc/core/features/AFeature.hpp
+        inc/core/features/AFeature.hpp \
+    inc/core/features/Notification.hpp \
 
 FORMS    +=
 
