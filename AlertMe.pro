@@ -20,6 +20,8 @@ unix {
     QMAKE_CXXFLAGS += -Werror
 }
 
+QMAKE_CXXFLAGS += -std=c++11
+
 QMAKE_CLEAN = gen/* ui/include/* bin/*
 
 SOURCES += src/Main.cpp \
