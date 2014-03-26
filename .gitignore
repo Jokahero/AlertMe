@@ -19,5 +19,8 @@ qrc_*.cpp
 Makefile
 *-build-*
 
+# Generated documentation
+api-doc
+
 # Binary file
 AlertMe
