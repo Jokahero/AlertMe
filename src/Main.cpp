@@ -1,6 +1,8 @@
+#include <QAction>
 #include <QApplication>
-
+#include <QMenu>
 #include <QSystemTrayIcon>
+#include <QTranslator>
 
 #include <iostream>
 
@@ -15,7 +17,13 @@ int main(int argc, char** argv) {
 	QSystemTrayIcon *icon = new QSystemTrayIcon(QIcon(":///icons/images/logo.png"));
 	icon->show();
 
-	AlertManager *manager = new AlertManager();
+    QMenu* menu = new QMenu();
+    QAction* quitAction = menu->addAction(QAction::tr("&Quitter"));
+    icon->setContextMenu(menu);
+
+    QObject::connect(quitAction, &QAction::triggered, qApp, &QApplication::quit);
+
+    AlertManager *manager = new AlertManager();
 
 	TickTimer *myAlert = new TickTimer("My alert", "Description of my alert", 60);
 	myAlert->addFeature(new Feature::Sound("Test sound", "://sounds/poke.wav"));
