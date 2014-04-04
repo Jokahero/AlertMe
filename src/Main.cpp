@@ -1,6 +1,7 @@
 #include <QAction>
 #include <QApplication>
 #include <QMenu>
+#include <QtQuick/QQuickView>
 #include <QSystemTrayIcon>
 #include <QTranslator>
 
@@ -13,15 +14,31 @@
 
 int main(int argc, char** argv) {
     QApplication application(argc, argv);
+    application.setQuitOnLastWindowClosed(false);
+
+    // System tray icon -----------------------------------------------------------------
 
 	QSystemTrayIcon *icon = new QSystemTrayIcon(QIcon(":///icons/images/logo.png"));
 	icon->show();
 
     QMenu* menu = new QMenu();
-    QAction* quitAction = menu->addAction(QAction::tr("&Quitter"));
+    QAction* manageAction = menu->addAction(QIcon(":///icons/images/manage.png"), QAction::tr("Ma&nage"));
+    menu->addSeparator();
+    QAction* quitAction = menu->addAction(QIcon(":///icons/images/quit.png"), QAction::tr("&Quitter"));
+
     icon->setContextMenu(menu);
 
     QObject::connect(quitAction, &QAction::triggered, qApp, &QApplication::quit);
+
+    // Main dialog ----------------------------------------------------------------------
+
+    QQuickView* view = new QQuickView();
+    view->setSource(QUrl::fromLocalFile("ui/MainWidget.qml"));
+    //view.show();
+
+    QObject::connect(manageAction, &QAction::triggered, view, &QQuickView::show);
+
+    // Alerts ---------------------------------------------------------------------------
 
     AlertManager *manager = new AlertManager();
 

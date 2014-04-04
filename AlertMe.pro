@@ -3,8 +3,9 @@
 #-------------------------------------------------
 
 CONFIG += qt
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT += widgets
 QT += multimedia
+QT += qml quick
 
 TARGET = AlertMe
 TEMPLATE = app
@@ -43,3 +44,6 @@ FORMS    +=
 
 RESOURCES += res/default_sounds.qrc \
     res/images.qrc
+
+OTHER_FILES += \
+    ui/MainWidget.qml
