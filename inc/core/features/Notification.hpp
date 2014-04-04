@@ -20,6 +20,7 @@ namespace Feature {
 		 * \param message	Message to fill the notification with
 		 */
 		Notification(const QString& message);
+
 		/**
 		 * \brief Destructor
 		 */
