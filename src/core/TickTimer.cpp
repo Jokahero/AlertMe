@@ -9,6 +9,8 @@ TickTimer::TickTimer(const QString &name, const QString &description, unsigned i
     connect(_timer, SIGNAL(timeout()), this, SLOT(raise()));
 
 	_date = QDateTime(QDate::currentDate(), startTime, Qt::LocalTime);	
+
+	connect(this, &AAlert::toggled, this, &TickTimer::stateChanged);
 }
 
 TickTimer::~TickTimer() {
@@ -24,4 +26,8 @@ void TickTimer::start() {
 void TickTimer::raise() {
 	AAlert::raise();
 	std::cout << "[alert] " << _name.toStdString() << " : RAISE (" << QTime::currentTime().toString().toStdString() << ")" <<  std::endl;
+}
+
+void TickTimer::stateChanged(bool state) {
+	state ? start() : _timer->stop();
 }

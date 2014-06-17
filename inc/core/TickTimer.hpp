@@ -31,8 +31,10 @@ public:
 
 	virtual void start();
 
-	public slots:
-	virtual void raise();
+public slots:
+    virtual void raise();
+
+	virtual void stateChanged(bool state);
 
 protected:
 	unsigned int	_interval;		///< \brief Interval between two ticks

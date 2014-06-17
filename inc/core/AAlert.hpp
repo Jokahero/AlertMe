@@ -149,6 +149,13 @@ public slots:
 	 */
     virtual void raise();
 
+	/**
+	 * \brief User has switch the alert's state
+	 *
+	 * \param state New alert's state
+	 */
+	virtual void stateChanged(bool state) = 0;
+
 signals:
     void toggled(bool state);
     void nameChanged(QString name);
