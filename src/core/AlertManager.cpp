@@ -5,13 +5,13 @@
 AlertManager::AlertManager() {}
 
 AlertManager::~AlertManager() {
-	for (QVector<AAlert*>::const_iterator it = _alerts.begin(); it != _alerts.end(); ++it)
-		delete it;
+    for (AAlert* alert : _alerts)
+        delete alert;
 }
 
 void AlertManager::start() {
 	std::cout << "[AlertManager] starting all timers" << std::endl;
-	for (QVector<AAlert*>::const_iterator it = _alerts.begin(); it != _alerts.end(); ++it)
+    for (QList<AAlert*>::const_iterator it = _alerts.begin(); it != _alerts.end(); ++it)
 		startAlertTimer(*it);	
 }
 
@@ -21,4 +21,3 @@ void AlertManager::startAlertTimer(AAlert* alert) {
 	else
 		std::cout << "[AlertManager] timer '" << alert->name().toStdString() << "' did not start because it is inactive" << std::endl;
 }
-
