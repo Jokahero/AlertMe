@@ -11,6 +11,7 @@
 #include "core/features/Sound.hpp"
 #include "core/features/Notification.hpp"
 #include "core/TickTimer.hpp"
+#include "ui/ManageDialog.hpp"
 
 int main(int argc, char** argv) {
     QApplication application(argc, argv);
@@ -30,26 +31,35 @@ int main(int argc, char** argv) {
 
     QObject::connect(quitAction, &QAction::triggered, qApp, &QApplication::quit);
 
-    // Main dialog ----------------------------------------------------------------------
-
-    QQuickView* view = new QQuickView();
-    view->setSource(QUrl::fromLocalFile("ui/MainWidget.qml"));
-    //view.show();
-
-    QObject::connect(manageAction, &QAction::triggered, view, &QQuickView::show);
-
     // Alerts ---------------------------------------------------------------------------
-
     AlertManager *manager = new AlertManager();
 
-	TickTimer *myAlert = new TickTimer("My alert", "Description of my alert", 60);
-	myAlert->addFeature(new Feature::Sound("Test sound", "://sounds/poke.wav"));
-	Feature::Notification* notification = new Feature::Notification("Hey, wake up !");
-	notification->setSystemTrayIcon(icon);
-	myAlert->addFeature(notification);
+	/** Look around **/
+	Feature::Notification* eyesNotification = new Feature::Notification("Hey, look around !");
+	eyesNotification->setSystemTrayIcon(icon);
 
-	manager->addAlert(myAlert);
+	TickTimer *eyesAlert = new TickTimer("Eyes alert", "You should look away", 900);
+	eyesAlert->addFeature(new Feature::Sound("Test sound", "://sounds/poke.wav"));
+	eyesAlert->addFeature(eyesNotification);
+
+	/** Walk around **/
+	Feature::Notification* bodyNotification = new Feature::Notification("Hey, walk around !");
+	bodyNotification->setSystemTrayIcon(icon);
+
+	TickTimer *bodyAlert = new TickTimer("Body alert", "You should take a walk", 3600);
+	bodyAlert->addFeature(new Feature::Sound("Test sound", "://sounds/poke.wav"));
+	bodyAlert->addFeature(bodyNotification);
+
+	manager->addAlert(eyesAlert);
+	manager->addAlert(bodyAlert);
+
 	manager->start();
+
+    // Main dialog ----------------------------------------------------------------------
+    ManageDialog* dialog = new ManageDialog(manager);
+
+    //QObject::connect(manageAction, &QAction::triggered, view, &QQuickView::show);
+    QObject::connect(manageAction, &QAction::triggered, dialog, &ManageDialog::show);
     
     return application.exec();
 }
