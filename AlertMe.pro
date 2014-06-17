@@ -15,7 +15,7 @@ DESTDIR = bin
 INCLUDEPATH = inc ui/include inc/model 
 UI_DIR = ui/include
 OBJECTS_DIR = gen 
-MOC_DIR = gen 
+MOC_DIR = gen
 
 unix {
     QMAKE_CXXFLAGS += -Werror
@@ -31,6 +31,7 @@ SOURCES += src/Main.cpp \
         src/core/features/Sound.cpp \
 	src/core/TickTimer.cpp \
     src/core/features/Notification.cpp \
+    src/ui/ManageDialog.cpp
 
 HEADERS  += \ 
     inc/core/AAlert.hpp \
@@ -39,11 +40,13 @@ HEADERS  += \
 	inc/core/TickTimer.hpp \
         inc/core/features/AFeature.hpp \
     inc/core/features/Notification.hpp \
+    inc/ui/ManageDialog.hpp
 
 FORMS    +=
 
 RESOURCES += res/default_sounds.qrc \
-    res/images.qrc
+    res/images.qrc \
+    ui/widgets.qrc
 
 OTHER_FILES += \
     ui/MainWidget.qml
