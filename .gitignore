@@ -17,6 +17,8 @@
 moc_*.cpp
 qrc_*.cpp
 Makefile
+Makefile.release
+Makefile.debug
 *-build-*
 
 # Generated documentation
@@ -24,3 +26,7 @@ api-doc
 
 # Binary file
 AlertMe
+
+# Generated files
+gen
+bin
