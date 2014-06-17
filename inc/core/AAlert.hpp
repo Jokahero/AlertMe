@@ -18,6 +18,10 @@ namespace Feature {
 class AAlert : public QObject {
 	Q_OBJECT
 
+    Q_PROPERTY(bool active MEMBER _active NOTIFY toggled)
+    Q_PROPERTY(QString name MEMBER _name NOTIFY nameChanged)
+    Q_PROPERTY(QString description MEMBER _description NOTIFY descriptionChanged)
+
 public:
 	/**
 	 * \brief Constructor
@@ -143,7 +147,12 @@ public slots:
 	/**
 	 * \brief It is time !
 	 */
-	virtual void raise();
+    virtual void raise();
+
+signals:
+    void toggled(bool state);
+    void nameChanged(QString name);
+    void descriptionChanged(QString description);
 };
 
 inline void AAlert::setDate(QDateTime date) {
@@ -164,6 +173,7 @@ inline bool AAlert::isRepetitive() {
 
 inline void AAlert::setActive(bool active) {
 	_active = active;
+    emit toggled(_active);
 }
 
 inline bool AAlert::isActive() {
@@ -180,10 +190,12 @@ inline QString AAlert::description() const {
 
 inline void AAlert::setName(const QString &name) {
 	_name = name;
+    emit nameChanged(_name);
 }
 
 inline void AAlert::setDescription(const QString &description) {
 	_description = description;
+    emit descriptionChanged(_description);
 }
 
 inline QVector<Feature::AFeature*> AAlert::getFeatures() const {

@@ -2,8 +2,8 @@
 
 #include "core/features/AFeature.hpp"
 
-AAlert::AAlert(QString name, QString description) : _name(name), _description(description) {
-	_active = true;
+AAlert::AAlert(QString name, QString description) : QObject(),  _name(name), _description(description) {
+    _active = true;
 }
 
 AAlert::~AAlert() {}
