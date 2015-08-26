@@ -11,7 +11,7 @@ AlertManager::~AlertManager() {
 
 void AlertManager::start() {
 	std::cout << "[AlertManager] starting all timers" << std::endl;
-    for (QList<AAlert*>::const_iterator it = _alerts.begin(); it != _alerts.end(); ++it)
+    for (QVector<AAlert*>::const_iterator it = _alerts.begin(); it != _alerts.end(); ++it)
 		startAlertTimer(*it);	
 }
 

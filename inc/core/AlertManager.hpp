@@ -3,11 +3,11 @@
 
 #include "AAlert.hpp"
 
-#include <QList>
+#include <QVector>
 
 #include <QtQml/qqmllist.h>
 
-/*
+/**
  * \class AlertManager
  * \brief Manages alerts
  * 
@@ -15,34 +15,34 @@
  */
 class AlertManager {
 public:
-	/*
+    /**
 	 * \brief Constructor
 	 */
 	AlertManager();
 	
-	/*
+    /**
 	 * \brief Destructor
 	 */
 	virtual ~AlertManager();
 
-	/*
+    /**
 	 * \brief Adds an alert in the list
 	 *
 	 * \param alert Alert to add
 	 */
     inline void addAlert(AAlert* alert);
 
-	/*
+    /**
 	 * \brief Starts the alerts
 	 *
 	 * Starts all active alerts
 	 */
 	void start();
 
-    inline QList<AAlert*> getAlerts();
+    inline QVector<AAlert*> getAlerts();
 
 private:
-    QList<AAlert*>	_alerts;		///< \brief List of alerts
+    QVector<AAlert*>	_alerts;		///< \brief List of alerts
 
 	void startAlertTimer(AAlert* alert);
 };
@@ -51,7 +51,7 @@ inline void AlertManager::addAlert(AAlert* alert) {
 	_alerts.push_back(alert);
 }
 
-inline QList<AAlert*> AlertManager::getAlerts() {
+inline QVector<AAlert*> AlertManager::getAlerts() {
     return _alerts;
 }
 
