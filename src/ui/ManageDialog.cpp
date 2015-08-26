@@ -9,7 +9,7 @@ ManageDialog::ManageDialog(AlertModel*model, QWidget *parent) : QDialog(parent),
     _ui->setupUi(this);
 
     connect(_ui->closeButton, &QPushButton::clicked, this, &QDialog::accept);
-    connect(_ui->alertsListView, &QListView::activated, this, &ManageDialog::updateAlertDetails);
+    connect(_ui->alertsListView, &QListView::clicked, this, &ManageDialog::updateAlertDetails);
 
     _ui->alertsListView->setModel(model);
     _ui->alertsListView->setCurrentIndex(model->index(0));
