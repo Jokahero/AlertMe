@@ -32,6 +32,7 @@ SOURCES += src/Main.cpp \
 	src/core/TickTimer.cpp \
     src/core/features/Notification.cpp \
     src/ui/ManageDialog.cpp
+    src/model/AlertModel.cpp
 
 HEADERS  += \ 
     inc/core/AAlert.hpp \
@@ -41,6 +42,7 @@ HEADERS  += \
         inc/core/features/AFeature.hpp \
     inc/core/features/Notification.hpp \
     inc/ui/ManageDialog.hpp
+    inc/model/AlertModel.hpp
 
 FORMS    +=
 
