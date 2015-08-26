@@ -31,7 +31,7 @@ SOURCES += src/Main.cpp \
         src/core/features/Sound.cpp \
 	src/core/TickTimer.cpp \
     src/core/features/Notification.cpp \
-    src/ui/ManageDialog.cpp
+    src/ui/ManageDialog.cpp \
     src/model/AlertModel.cpp
 
 HEADERS  += \ 
@@ -41,10 +41,11 @@ HEADERS  += \
 	inc/core/TickTimer.hpp \
         inc/core/features/AFeature.hpp \
     inc/core/features/Notification.hpp \
-    inc/ui/ManageDialog.hpp
+    inc/ui/ManageDialog.hpp \
     inc/model/AlertModel.hpp
 
-FORMS    +=
+FORMS    += \
+    ui/ManageDialog.ui
 
 RESOURCES += res/default_sounds.qrc \
     res/images.qrc \

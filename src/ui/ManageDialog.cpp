@@ -1,20 +1,24 @@
-#include "ui/ManageDialog.hpp"
+#include "inc/ui/ManageDialog.hpp"
+#include "ui_ManageDialog.h"
 
-#include "core/AAlert.hpp"
-#include "core/AlertManager.hpp"
+#include "inc/model/AlertModel.hpp"
 
-#include <QQmlContext>
-#include <QQuickItem>
-#include <QQuickView>
+#include <QDebug>
 
-#include <iostream>
+ManageDialog::ManageDialog(AlertModel*model, QWidget *parent) : QDialog(parent), _ui(new Ui::ManageDialog) {
+    _ui->setupUi(this);
 
-ManageDialog::ManageDialog(AlertManager* manager) : QQuickView() {
-    setResizeMode(QQuickView::SizeRootObjectToView);
+    connect(_ui->closeButton, &QPushButton::clicked, this, &QDialog::accept);
+    connect(_ui->alertsListView, &QListView::activated, this, &ManageDialog::updateAlertDetails);
 
-    QList<QObject*> model;
-    for (AAlert* alert : manager->getAlerts())
-        model.append(alert);
-    rootContext()->setContextProperty("alerts", QVariant::fromValue(model));
-    setSource(QUrl("qrc:/ui/MainWidget.qml"));
+    _ui->alertsListView->setModel(model);
+    _ui->alertsListView->setCurrentIndex(model->index(0));
+}
+
+ManageDialog::~ManageDialog() {
+    delete _ui;
+}
+
+void ManageDialog::updateAlertDetails(const QModelIndex &index) {
+    _ui->labelEdit->setText(index.data().toString());
 }

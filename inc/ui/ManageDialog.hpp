@@ -1,14 +1,26 @@
-#ifndef __MANAGE_DIALOG_HPP__
-#define __MANAGE_DIALOG_HPP__
+#ifndef MANAGEDIALOG_HPP
+#define MANAGEDIALOG_HPP
 
-#include <QtQuick/QQuickView>
+#include <QDialog>
 
-class AAlert;
-class AlertManager;
+namespace Ui {
+    class ManageDialog;
+}
 
-class ManageDialog : public QQuickView {
+class AlertModel;
+
+class ManageDialog : public QDialog {
+    Q_OBJECT
+
 public:
-    ManageDialog(AlertManager* manager);
+    explicit ManageDialog(AlertModel *model, QWidget *parent = 0);
+    ~ManageDialog();
+
+private slots:
+    void updateAlertDetails(const QModelIndex &index);
+
+private:
+    Ui::ManageDialog *_ui;
 };
 
-#endif // __MANAGE_DIALOG_HPP__
+#endif // MANAGEDIALOG_HPP
