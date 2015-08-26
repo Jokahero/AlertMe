@@ -14,16 +14,16 @@ int AlertModel::rowCount(const QModelIndex &parent) const {
 
 QVariant AlertModel::data(const QModelIndex &index, int role) const {
     if (!index.isValid())
-        return 0;
+        return QVariant();
 
     int row = index.row();
     if (row < 0 || row >= _alerts.size())
-        return 0;
+        return QVariant();
 
     switch (role) {
         case Qt::DisplayRole:
             return _alerts.at(row)->name();
     }
 
-    return 0;
+    return QVariant();
 }
