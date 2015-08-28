@@ -1,5 +1,5 @@
-#ifndef __SOUND_HPP__
-#define __SOUND_HPP__
+#ifndef SOUND_HPP
+#define SOUND_HPP
 
 #include "AFeature.hpp"
 
@@ -42,4 +42,4 @@ namespace Feature {
 		static const QString NAME;		///< \brief Feature's name
 	};
 }
-#endif // __SOUND_HPP__
+#endif // SOUND_HPP

@@ -1,5 +1,5 @@
-#ifndef __AALERT_HPP__
-#define __AALERT_HPP__
+#ifndef A_ALERT_HPP
+#define A_ALERT_HPP
 
 namespace Feature {
 	class AFeature;
@@ -209,4 +209,4 @@ inline QVector<Feature::AFeature*> AAlert::getFeatures() const {
 	return _features;
 }
 
-#endif // __AALERT_HPP__
+#endif // A_ALERT_HPP

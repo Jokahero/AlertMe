@@ -1,5 +1,5 @@
-#ifndef __ALERT_MANAGER_HPP__
-#define __ALERT_MANAGER_HPP__
+#ifndef ALERT_MANAGER_HPP
+#define ALERT_MANAGER_HPP
 
 #include "AAlert.hpp"
 
@@ -55,4 +55,4 @@ inline QVector<AAlert*> AlertManager::getAlerts() {
     return _alerts;
 }
 
-#endif // __ALERT_MANAGER_HPP__
+#endif // ALERT_MANAGER_HPP

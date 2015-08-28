@@ -1,5 +1,5 @@
-#ifndef __AFEATURE_HPP__
-#define __AFEATURE_HPP__
+#ifndef A_FEATURE_HPP
+#define A_FEATURE_HPP
 
 #include <QString>
 
@@ -27,4 +27,4 @@ namespace Feature {
 		virtual void play() = 0;
 	};
 }
-#endif // __AFEATURE_HPP__
+#endif // A_FEATURE_HPP

@@ -1,5 +1,5 @@
-#ifndef __NOTIFICATION_HPP__
-#define __NOTIFICATION_HPP__
+#ifndef NOTIFICATION_HPP
+#define NOTIFICATION_HPP
 
 #include "AFeature.hpp"
 
@@ -50,4 +50,4 @@ namespace Feature {
 	}
 }
 
-#endif // __NOTIFICATION_HPP__
+#endif // NOTIFICATION_HPP

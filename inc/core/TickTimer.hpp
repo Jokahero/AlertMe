@@ -1,5 +1,5 @@
-#ifndef __TICK_TIMER_HPP__
-#define __TICK_TIMER_HPP__
+#ifndef TICK_TIMER_HPP
+#define TICK_TIMER_HPP
 
 #include "AAlert.hpp"
 
@@ -44,4 +44,4 @@ private:
 	QTimer*			_timer;
 };
 
-#endif // __TICK_TIMER_HPP__
+#endif // TICK_TIMER_HPP
