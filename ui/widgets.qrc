@@ -1,5 +1,0 @@
-<RCC>
-    <qresource prefix="/ui">
-        <file>MainWidget.qml</file>
-    </qresource>
-</RCC>

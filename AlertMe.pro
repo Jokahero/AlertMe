@@ -48,8 +48,5 @@ FORMS    += \
     ui/ManageDialog.ui
 
 RESOURCES += res/default_sounds.qrc \
-    res/images.qrc \
-    ui/widgets.qrc
+    res/images.qrc
 
-OTHER_FILES += \
-    ui/MainWidget.qml
