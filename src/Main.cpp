@@ -11,6 +11,7 @@
 #include "core/features/Sound.hpp"
 #include "core/features/Notification.hpp"
 #include "core/TickTimer.hpp"
+#include "model/AlertModel.hpp"
 #include "ui/ManageDialog.hpp"
 
 int main(int argc, char** argv) {
@@ -55,11 +56,14 @@ int main(int argc, char** argv) {
 
 	manager->start();
 
-    // Main dialog ----------------------------------------------------------------------
-    ManageDialog* dialog = new ManageDialog(manager);
+	AlertModel *model = new AlertModel(manager->getAlerts());
 
-    //QObject::connect(manageAction, &QAction::triggered, view, &QQuickView::show);
-    QObject::connect(manageAction, &QAction::triggered, dialog, &ManageDialog::show);
-    
-    return application.exec();
+	// Main dialog ----------------------------------------------------------------------
+	ManageDialog* dialog = new ManageDialog(model);
+	dialog->show();
+
+	//QObject::connect(manageAction, &QAction::triggered, view, &QQuickView::show);
+	QObject::connect(manageAction, &QAction::triggered, dialog, &ManageDialog::show);
+
+	return application.exec();
 }
