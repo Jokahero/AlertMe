@@ -30,3 +30,4 @@ AlertMe
 # Generated files
 gen
 bin
+ui_*
