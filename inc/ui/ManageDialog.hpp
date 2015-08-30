@@ -34,10 +34,31 @@ private slots:
 	 */
 	void updateModel();
 
+	/**
+	 * @brief The text in the label text edit changed
+	 */
+	void onLabelChanged();
+
+	/**
+	 * @brief The text in the description text edit changed
+	 */
+	void onDescriptionChanged();
+
+	/**
+	 * @brief The state of the repetitive check box changed
+	 */
+	void onRepetitiveChanged();
+
 private:
 	Ui::ManageDialog *_ui;
 
 	AlertModel *_model;
+
+	void updateButtonAvailability();
+
+	bool _labelChanged;
+	bool _descriptionChanged;
+	bool _repetitiveChanged;
 };
 
 #endif // MANAGEDIALOG_HPP

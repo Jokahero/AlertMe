@@ -16,6 +16,10 @@ ManageDialog::ManageDialog(AlertModel*model, QWidget *parent) : QDialog(parent),
 	connect(_ui->alertsListView, &QListView::clicked, this, &ManageDialog::updateAlertDetails);
 	connect(_ui->resetButton, &QPushButton::clicked, this, &ManageDialog::reset);
 	connect(_ui->updateButton, &QPushButton::clicked, this, &ManageDialog::updateModel);
+
+	connect(_ui->labelEdit, &QLineEdit::textChanged, this, &ManageDialog::onLabelChanged);
+	connect(_ui->descriptionEdit, &QLineEdit::textChanged, this, &ManageDialog::onDescriptionChanged);
+	connect(_ui->repetitiveCheckbox, &QCheckBox::toggled, this, &ManageDialog::onRepetitiveChanged);
 }
 
 ManageDialog::~ManageDialog() {
@@ -27,6 +31,12 @@ void ManageDialog::updateAlertDetails(const QModelIndex &index) {
 	_ui->labelEdit->setText(dataMap.value(AlertModel::NameRole).toString());
 	_ui->descriptionEdit->setText(dataMap.value(AlertModel::DesciptionRole).toString());
 	_ui->repetitiveCheckbox->setChecked(dataMap.value(AlertModel::RepetitiveRole).toBool());
+
+	_labelChanged = false;
+	_descriptionChanged = false;
+	_repetitiveChanged = false;
+
+	updateButtonAvailability();
 }
 
 void ManageDialog::reset() {
@@ -41,4 +51,25 @@ void ManageDialog::updateModel() {
 	dataMap.insert(AlertModel::DesciptionRole, _ui->descriptionEdit->text());
 
 	_model->setItemData(_ui->alertsListView->currentIndex(), dataMap);
+}
+
+void ManageDialog::onLabelChanged() {
+	_labelChanged = _ui->labelEdit->text() != _model->data(_ui->alertsListView->currentIndex(), AlertModel::NameRole).toString();
+	updateButtonAvailability();
+}
+
+void ManageDialog::onDescriptionChanged() {
+	_descriptionChanged = _ui->descriptionEdit->text() != _model->data(_ui->alertsListView->currentIndex(), AlertModel::DesciptionRole).toString();
+	updateButtonAvailability();
+}
+
+void ManageDialog::onRepetitiveChanged() {
+	_repetitiveChanged = _ui->repetitiveCheckbox->isChecked() != _model->data(_ui->alertsListView->currentIndex(), AlertModel::RepetitiveRole).toBool();
+	updateButtonAvailability();
+}
+
+void ManageDialog::updateButtonAvailability() {
+	bool enabled = _labelChanged || _descriptionChanged || _repetitiveChanged;
+	_ui->updateButton->setEnabled(enabled);
+	_ui->resetButton->setEnabled(enabled);
 }
