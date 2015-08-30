@@ -80,14 +80,16 @@ bool AlertModel::setData(const QModelIndex &index, const QVariant &value, int ro
 		case AlertModel::RepetitiveRole:
 			alert->setRepetitive(value.toBool());
 			return true;
+		default:
+			return QAbstractListModel::setData(index, value, role);
 	}
-
-	return false;
 }
 
 bool AlertModel::setItemData(const QModelIndex &index, const QMap<int, QVariant> &roles) {
 	if (!isIndexValid(index))
 		return false;
+
+	QAbstractListModel::setItemData(index, roles);
 
 	AAlert *alert = _alerts.at(index.row());
 
