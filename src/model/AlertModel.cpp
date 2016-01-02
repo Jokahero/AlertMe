@@ -98,5 +98,7 @@ bool AlertModel::setItemData(const QModelIndex &index, const QMap<int, QVariant>
 	alert->setName(roles.value(AlertModel::NameRole).toString());
 	alert->setRepetitive(roles.value(AlertModel::RepetitiveRole).toBool());
 
+	emit dataChanged(index, index);
+
 	return true;
 }
