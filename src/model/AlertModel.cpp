@@ -102,3 +102,14 @@ bool AlertModel::setItemData(const QModelIndex &index, const QMap<int, QVariant>
 
 	return true;
 }
+
+bool AlertModel::removeRow(int row, const QModelIndex &parent) {
+	if (row >= 0 && row < _alerts.size()) {
+		beginRemoveRows(parent, row, row);
+		_alerts.remove(row);
+		emit dataChanged(createIndex(0, 0), createIndex(_alerts.size() - 1, 0));
+		endRemoveRows();
+		return true;
+	} else
+		return false;
+}

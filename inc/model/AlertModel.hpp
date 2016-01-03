@@ -23,9 +23,7 @@ public:
 	virtual bool setData(const QModelIndex &index, const QVariant &value, int role);
 	virtual bool setItemData(const QModelIndex &index, const QMap<int, QVariant> &roles);
 
-signals:
-
-public slots:
+	virtual bool removeRow(int row, const QModelIndex &parent = QModelIndex());
 
 private:
 	QVector<AAlert*> _alerts;

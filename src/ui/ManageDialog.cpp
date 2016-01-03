@@ -3,14 +3,12 @@
 
 #include "inc/model/AlertModel.hpp"
 
-#include <QDebug>
-
 ManageDialog::ManageDialog(AlertModel*model, QWidget *parent) : QDialog(parent), _ui(new Ui::ManageDialog), _model(model) {
 	_ui->setupUi(this);
 
 	_ui->alertsListView->setModel(model);
 	_ui->alertsListView->setCurrentIndex(model->index(0));
-	updateAlertDetails(_ui->alertsListView->currentIndex());
+	refreshDetails();
 
 	connect(_ui->closeButton, &QPushButton::clicked, this, &QDialog::accept);
 	connect(_ui->alertsListView, &QListView::clicked, this, &ManageDialog::updateAlertDetails);
@@ -20,6 +18,8 @@ ManageDialog::ManageDialog(AlertModel*model, QWidget *parent) : QDialog(parent),
 	connect(_ui->labelEdit, &QLineEdit::textChanged, this, &ManageDialog::onLabelChanged);
 	connect(_ui->descriptionEdit, &QLineEdit::textChanged, this, &ManageDialog::onDescriptionChanged);
 	connect(_ui->repetitiveCheckbox, &QCheckBox::toggled, this, &ManageDialog::onRepetitiveChanged);
+
+	connect(_ui->removeButton, &QPushButton::clicked, this, &ManageDialog::removeAlert);
 }
 
 ManageDialog::~ManageDialog() {
@@ -72,4 +72,18 @@ void ManageDialog::updateButtonAvailability() {
 	bool enabled = _labelChanged || _descriptionChanged || _repetitiveChanged;
 	_ui->updateButton->setEnabled(enabled);
 	_ui->resetButton->setEnabled(enabled);
+}
+
+void ManageDialog::removeAlert() {
+	QItemSelectionModel *selection = _ui->alertsListView->selectionModel();
+
+	QModelIndex index = selection->currentIndex();
+	if (index.isValid())
+		_model->removeRow(index.row());
+
+	refreshDetails();
+}
+
+void ManageDialog::refreshDetails() {
+	updateAlertDetails(_ui->alertsListView->currentIndex());
 }
