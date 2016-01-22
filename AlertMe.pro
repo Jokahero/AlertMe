@@ -7,14 +7,14 @@ QT += widgets
 QT += multimedia
 QT += qml quick
 
-TARGET = AlertMe
+TARGET = alertme
 TEMPLATE = app
 
 DESTDIR = bin
 
-INCLUDEPATH = inc ui/include inc/model 
+INCLUDEPATH = inc ui/include inc/model
 UI_DIR = ui/include
-OBJECTS_DIR = gen 
+OBJECTS_DIR = gen
 MOC_DIR = gen
 
 unix {
@@ -34,7 +34,7 @@ SOURCES += src/Main.cpp \
     src/ui/ManageDialog.cpp \
     src/model/AlertModel.cpp
 
-HEADERS  += \ 
+HEADERS  += \
     inc/core/AAlert.hpp \
 	inc/core/AlertManager.hpp \
         inc/core/features/Sound.hpp \
@@ -50,3 +50,14 @@ FORMS    += \
 RESOURCES += res/default_sounds.qrc \
     res/images.qrc
 
+target.path += /usr/local/bin
+
+icon.files += res/images/bell.png
+icon.path += /usr/share/alertme/icons/
+
+desktop.files += alertme.desktop
+desktop.path += /usr/share/alertme/
+
+INSTALLS += target
+INSTALLS += icon
+INSTALLS += desktop
