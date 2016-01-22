@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Alert Me
+Comment=
+Exec=alertme
+Icon=/usr/share/alertme/icons/bell.png
+Type=Application
+Categories=Utility;
