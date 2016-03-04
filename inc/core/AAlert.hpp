@@ -18,10 +18,6 @@ namespace Feature {
 class AAlert : public QObject {
 	Q_OBJECT
 
-    Q_PROPERTY(bool active MEMBER _active NOTIFY toggled)
-    Q_PROPERTY(QString name MEMBER _name NOTIFY nameChanged)
-    Q_PROPERTY(QString description MEMBER _description NOTIFY descriptionChanged)
-
 public:
 	/**
 	 * \brief Constructor
