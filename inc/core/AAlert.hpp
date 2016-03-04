@@ -128,12 +128,19 @@ public:
 	 */
 	inline QVector<Feature::AFeature*> getFeatures() const;
 
+	/**
+	 * @brief Returns whether this alert is filled with default values
+	 *
+	 * @return true if it is a default-constructed object, false otherwise
+	 */
+	virtual bool isDefault() const = 0;
+
 protected:
 	QString						_name;			///< \brief Name of the alert
 	QString						_description;	///< \brief Description of the alert
 
 	QDateTime					_date;			///< \brief Raising date
-	
+
 	bool						_active;		///< \brief Is the alert active
 	bool						_repetitive;	///< \brief Is the alert repetitive
 

@@ -15,6 +15,11 @@ class TickTimer : public AAlert {
 
 public:
 	/**
+	 * @brief Default constructor
+	 */
+	TickTimer();
+
+	/**
 	 * \brief Constructor
 	 *
 	 * \param name			Timer's name
@@ -31,6 +36,8 @@ public:
 
 	virtual void start();
 
+	virtual bool isDefault() const override;
+
 public slots:
     virtual void raise();
 
@@ -42,6 +49,10 @@ protected:
 
 private:
 	QTimer*			_timer;
+
+	static const QString DEFAULT_NAME;
+	static const QString DEFAULT_DESCRIPTION;
+	static const unsigned int DEFAULT_INTERVAL;
 };
 
 #endif // TICK_TIMER_HPP

@@ -4,6 +4,12 @@
 
 #include <iostream>
 
+const QString TickTimer::DEFAULT_NAME = "New alert";
+const QString TickTimer::DEFAULT_DESCRIPTION = "New alert's description";
+const unsigned int TickTimer::DEFAULT_INTERVAL = 300;
+
+TickTimer::TickTimer() : TickTimer(DEFAULT_NAME, DEFAULT_DESCRIPTION, DEFAULT_INTERVAL) {}
+
 TickTimer::TickTimer(const QString &name, const QString &description, unsigned int interval, QTime startTime) : AAlert(name, description), _interval(interval), _startTime(startTime) {
 	_timer = new QTimer(this);
     connect(_timer, SIGNAL(timeout()), this, SLOT(raise()));
@@ -30,4 +36,8 @@ void TickTimer::raise() {
 
 void TickTimer::stateChanged(bool state) {
 	state ? start() : _timer->stop();
+}
+
+bool TickTimer::isDefault() const {
+	return _name == DEFAULT_NAME && _description == DEFAULT_DESCRIPTION && _interval == DEFAULT_INTERVAL;
 }
