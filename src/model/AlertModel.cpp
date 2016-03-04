@@ -2,12 +2,10 @@
 
 #include "core/AAlert.hpp"
 
-#define UNUSED(x) (void)x
-
 AlertModel::AlertModel(QVector<AAlert*> alerts, QObject *parent) : QAbstractListModel(parent), _alerts(alerts) {}
 
 int AlertModel::rowCount(const QModelIndex &parent) const {
-	UNUSED(parent);
+	Q_UNUSED(parent);
 
 	return _alerts.size();
 }
