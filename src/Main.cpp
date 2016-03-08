@@ -63,7 +63,6 @@ int main(int argc, char** argv) {
 	ManageDialog* dialog = new ManageDialog(model);
 	dialog->show();
 
-	//QObject::connect(manageAction, &QAction::triggered, view, &QQuickView::show);
 	QObject::connect(manageAction, &QAction::triggered, dialog, &ManageDialog::show);
 
 	return application.exec();
