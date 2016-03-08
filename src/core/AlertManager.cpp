@@ -1,21 +1,23 @@
 #include "core/AlertManager.hpp"
 
+#include "core/Alert.hpp"
+
 #include <iostream>
 
 AlertManager::AlertManager() {}
 
 AlertManager::~AlertManager() {
-    for (AAlert* alert : _alerts)
-        delete alert;
+	for (Alert* alert : _alerts)
+		delete alert;
 }
 
 void AlertManager::start() {
 	std::cout << "[AlertManager] starting all timers" << std::endl;
-    for (QVector<AAlert*>::const_iterator it = _alerts.begin(); it != _alerts.end(); ++it)
-		startAlertTimer(*it);	
+	for (QVector<Alert*>::const_iterator it = _alerts.begin(); it != _alerts.end(); ++it)
+		startAlertTimer(*it);
 }
 
-void AlertManager::startAlertTimer(AAlert* alert) {
+void AlertManager::startAlertTimer(Alert* alert) {
 	if (alert->isActive())
 		alert->start();
 	else

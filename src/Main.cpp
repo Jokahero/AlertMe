@@ -7,10 +7,10 @@
 
 #include <iostream>
 
+#include "core/Alert.hpp"
 #include "core/AlertManager.hpp"
 #include "core/features/Sound.hpp"
 #include "core/features/Notification.hpp"
-#include "core/TickTimer.hpp"
 #include "model/AlertModel.hpp"
 #include "ui/ManageDialog.hpp"
 
@@ -39,7 +39,7 @@ int main(int argc, char** argv) {
 	Feature::Notification* eyesNotification = new Feature::Notification("Hey, look around !");
 	eyesNotification->setSystemTrayIcon(icon);
 
-	TickTimer *eyesAlert = new TickTimer("Eyes alert", "You should look away", 900);
+	Alert *eyesAlert = new Alert("Eyes alert", "You should look away", 900);
 	//eyesAlert->addFeature(new Feature::Sound("Test sound", "://sounds/poke.wav"));
 	eyesAlert->addFeature(eyesNotification);
 
@@ -47,7 +47,7 @@ int main(int argc, char** argv) {
 	Feature::Notification* bodyNotification = new Feature::Notification("Hey, walk around !");
 	bodyNotification->setSystemTrayIcon(icon);
 
-	TickTimer *bodyAlert = new TickTimer("Body alert", "You should take a walk", 3600);
+	Alert *bodyAlert = new Alert("Body alert", "You should take a walk", 3600);
 	bodyAlert->addFeature(new Feature::Sound("Test sound", "://sounds/poke.wav"));
 	bodyAlert->addFeature(bodyNotification);
 

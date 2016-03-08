@@ -1,8 +1,8 @@
 #include "inc/model/AlertModel.hpp"
 
-#include "core/AAlert.hpp"
+#include "core/Alert.hpp"
 
-AlertModel::AlertModel(QVector<AAlert*> alerts, QObject *parent) : QAbstractListModel(parent), _alerts(alerts) {}
+AlertModel::AlertModel(QVector<Alert*> alerts, QObject *parent) : QAbstractListModel(parent), _alerts(alerts) {}
 
 int AlertModel::rowCount(const QModelIndex &parent) const {
 	Q_UNUSED(parent);
@@ -39,7 +39,7 @@ QMap<int, QVariant> AlertModel::itemData(const QModelIndex &index) const {
 
 	QMap<int, QVariant> map = QAbstractListModel::itemData(index);
 
-	AAlert *alert = _alerts.at(index.row());
+	Alert *alert = _alerts.at(index.row());
 
 	map.insert(AlertModel::ActiveRole, alert->isActive());
 	map.insert(AlertModel::DelayRole, QVariant()); // FIXME
@@ -63,7 +63,7 @@ bool AlertModel::setData(const QModelIndex &index, const QVariant &value, int ro
 	if (!isIndexValid(index))
 		return false;
 
-	AAlert *alert = _alerts.at(index.row());
+	Alert *alert = _alerts.at(index.row());
 
 	switch (role) {
 		case AlertModel::ActiveRole:
@@ -89,7 +89,7 @@ bool AlertModel::setItemData(const QModelIndex &index, const QMap<int, QVariant>
 
 	QAbstractListModel::setItemData(index, roles);
 
-	AAlert *alert = _alerts.at(index.row());
+	Alert *alert = _alerts.at(index.row());
 
 	alert->setActive(roles.value(AlertModel::ActiveRole).toBool());
 	alert->setDescription(roles.value(AlertModel::DesciptionRole).toString());

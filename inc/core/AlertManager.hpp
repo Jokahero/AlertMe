@@ -1,7 +1,7 @@
 #ifndef ALERT_MANAGER_HPP
 #define ALERT_MANAGER_HPP
 
-#include "AAlert.hpp"
+class Alert;
 
 #include <QVector>
 
@@ -30,7 +30,7 @@ public:
 	 *
 	 * \param alert Alert to add
 	 */
-    inline void addAlert(AAlert* alert);
+    inline void addAlert(Alert* alert);
 
     /**
 	 * \brief Starts the alerts
@@ -39,19 +39,19 @@ public:
 	 */
 	void start();
 
-    inline QVector<AAlert*> getAlerts();
+    inline QVector<Alert*> getAlerts();
 
 private:
-    QVector<AAlert*>	_alerts;		///< \brief List of alerts
+    QVector<Alert*>	_alerts;		///< \brief List of alerts
 
-	void startAlertTimer(AAlert* alert);
+	void startAlertTimer(Alert* alert);
 };
 
-inline void AlertManager::addAlert(AAlert* alert) {
+inline void AlertManager::addAlert(Alert* alert) {
 	_alerts.push_back(alert);
 }
 
-inline QVector<AAlert*> AlertManager::getAlerts() {
+inline QVector<Alert*> AlertManager::getAlerts() {
     return _alerts;
 }
 
