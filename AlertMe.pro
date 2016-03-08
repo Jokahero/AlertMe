@@ -3,6 +3,8 @@
 #-------------------------------------------------
 
 CONFIG += qt
+CONFIG += c++14
+
 QT += widgets
 QT += multimedia
 QT += qml
@@ -22,7 +24,6 @@ unix {
     QMAKE_CXXFLAGS += -Werror
 }
 
-QMAKE_CXXFLAGS += -std=c++11
 DEFINES *= QT_USE_QSTRINGBUILDER
 
 QMAKE_CLEAN = gen/* ui/include/* bin/*
