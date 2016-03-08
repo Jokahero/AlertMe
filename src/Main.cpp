@@ -17,6 +17,7 @@
 int main(int argc, char** argv) {
 	QApplication application(argc, argv);
 	//application.setQuitOnLastWindowClosed(false);
+	QCoreApplication::setApplicationName("Cronos");
 
 	// System tray icon -----------------------------------------------------------------
 

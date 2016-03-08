@@ -1,5 +1,5 @@
 #-------------------------------------------------
-# AlertMe
+# Cronos
 #-------------------------------------------------
 
 CONFIG += qt
@@ -10,7 +10,7 @@ QT += multimedia
 QT += qml
 QT += quick
 
-TARGET = AlertMe
+TARGET = Cronos
 TEMPLATE = app
 
 DESTDIR = bin
