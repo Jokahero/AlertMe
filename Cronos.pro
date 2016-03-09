@@ -2,6 +2,8 @@
 # Cronos
 #-------------------------------------------------
 
+QMAKE_CXX = clang++
+
 CONFIG += qt
 CONFIG += c++14
 

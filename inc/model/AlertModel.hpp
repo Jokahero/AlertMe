@@ -8,11 +8,11 @@ class Alert;
 
 class AlertModel : public QAbstractListModel {
 public:
-	static const int ActiveRole = Qt::UserRole;
-	static const int DelayRole = Qt::UserRole + 1;
-	static const int DesciptionRole = Qt::UserRole + 2;
-	static const int NameRole = Qt::UserRole + 3;
-	static const int RepetitiveRole = Qt::UserRole + 4;
+	static const int ActiveRole;
+	static const int DelayRole;
+	static const int DesciptionRole;
+	static const int NameRole;
+	static const int RepetitiveRole;
 
 	explicit AlertModel(QVector<Alert*> alerts, QObject *parent = 0);
 

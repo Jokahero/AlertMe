@@ -2,6 +2,12 @@
 
 #include "core/Alert.hpp"
 
+const int AlertModel::ActiveRole = Qt::UserRole;
+const int AlertModel::DelayRole = Qt::UserRole + 1;
+const int AlertModel::DesciptionRole = Qt::UserRole + 2;
+const int AlertModel::NameRole = Qt::UserRole + 3;
+const int AlertModel::RepetitiveRole = Qt::UserRole + 4;
+
 AlertModel::AlertModel(QVector<Alert*> alerts, QObject *parent) : QAbstractListModel(parent), _alerts(alerts) {}
 
 int AlertModel::rowCount(const QModelIndex &parent) const {
