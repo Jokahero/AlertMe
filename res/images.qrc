@@ -2,6 +2,8 @@
     <qresource prefix="/icons">
         <file>images/manage.png</file>
         <file>images/quit.png</file>
+        <file>images/add.png</file>
         <file>images/bell.png</file>
+        <file>images/remove.png</file>
     </qresource>
 </RCC>

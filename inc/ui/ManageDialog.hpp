@@ -49,6 +49,13 @@ private slots:
 	 */
 	void onRepetitiveChanged();
 
+	/**
+	 * @brief Removes the currently selected alert
+	 */
+	void removeAlert();
+
+	void refreshDetails();
+
 private:
 	Ui::ManageDialog *_ui;
 

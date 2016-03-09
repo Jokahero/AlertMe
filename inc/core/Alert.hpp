@@ -5,6 +5,8 @@ namespace Feature {
 	class AFeature;
 }
 
+class QTimer;
+
 #include <QDateTime>
 #include <QObject>
 #include <QVector>
@@ -15,31 +17,32 @@ namespace Feature {
  *
  * \brief Abstract class for alerts
  */
-class AAlert : public QObject {
+class Alert : public QObject {
 	Q_OBJECT
 
-    Q_PROPERTY(bool active MEMBER _active NOTIFY toggled)
-    Q_PROPERTY(QString name MEMBER _name NOTIFY nameChanged)
-    Q_PROPERTY(QString description MEMBER _description NOTIFY descriptionChanged)
-
 public:
+	/**
+	 * @brief Default constructor
+	 */
+	Alert(QObject *parent = nullptr);
+
 	/**
 	 * \brief Constructor
 	 *
 	 * \param name			Alert name
 	 * \param description	Description name
 	 */
-    AAlert(QString name, QString description);
+	Alert(const QString &name, const QString &description, unsigned int delay, QDateTime startDate = QDateTime::currentDateTime(), QObject *parent = nullptr);
 
 	/**
 	 * \brief Destructor
 	 */
-	virtual ~AAlert();
+	virtual ~Alert();
 
 	/**
 	 * \brief Starts the alert's timer
 	 */
-	virtual void start() = 0;
+	virtual void start();
 
 	/**
 	 * \brief Sets the raising date of this alert
@@ -53,7 +56,7 @@ public:
 	 *
 	 * \return the raising date
 	 */
-	inline QDateTime getDate();
+	inline const QDateTime& getDate() const;
 
 	/**
 	 * \brief Sets whether the alert is repetitive or not
@@ -67,8 +70,8 @@ public:
 	 *
 	 * \return true if the alert is repetitive, false otherwise
 	 */
-	inline bool isRepetitive();
-	
+	inline bool isRepetitive() const;
+
 	/**
 	 * \brief Sets whether this alert is active or not
 	 *
@@ -79,23 +82,23 @@ public:
 	/**
 	 * \brief Returns the active state of this alert
 	 *
-	 * \return true if the alert is active, false otherwise 
+	 * \return true if the alert is active, false otherwise
 	 */
-	inline bool isActive();
+	inline bool isActive() const;
 
 	/**
 	 * \brief Returns the name of the alert
 	 *
 	 * \return the name of the alert
 	 */
-	inline QString name() const;
+	inline const QString& name() const;
 
 	/**
 	 * \brief Returns the description of the alert
 	 *
 	 * \return the description of the alert
 	 */
-	inline QString description() const;
+	inline const QString& description() const;
 
 	/**
 	 * \brief Sets the name of the alert
@@ -123,7 +126,7 @@ public:
 	 *
 	 * \return true if the alarm has the feature, false otherwise
 	 */
-	bool hasFeature(const QString &name);
+	bool hasFeature(const QString &name) const;
 
 	/**
 	 * \brief Returns the list of features for this alert
@@ -132,12 +135,20 @@ public:
 	 */
 	inline QVector<Feature::AFeature*> getFeatures() const;
 
+	/**
+	 * @brief Returns whether this alert is filled with default values
+	 *
+	 * @return true if it is a default-constructed object, false otherwise
+	 */
+	virtual bool isDefault() const;
+
 protected:
 	QString						_name;			///< \brief Name of the alert
 	QString						_description;	///< \brief Description of the alert
 
-	QDateTime					_date;			///< \brief Raising date
-	
+	QDateTime					_date;			///< \brief First tick
+	unsigned int				_delay;			///< \brief Interval between two ticks
+
 	bool						_active;		///< \brief Is the alert active
 	bool						_repetitive;	///< \brief Is the alert repetitive
 
@@ -147,65 +158,64 @@ public slots:
 	/**
 	 * \brief It is time !
 	 */
-    virtual void raise();
+	virtual void raise();
 
 	/**
 	 * \brief User has switch the alert's state
 	 *
 	 * \param state New alert's state
 	 */
-	virtual void stateChanged(bool state) = 0;
+	virtual void stateChanged(bool state);
 
-signals:
-    void toggled(bool state);
-    void nameChanged(QString name);
-    void descriptionChanged(QString description);
+private:
+	QTimer*			_timer;
+
+	static const QString DEFAULT_NAME;
+	static const QString DEFAULT_DESCRIPTION;
+	static const unsigned int DEFAULT_INTERVAL;
 };
 
-inline void AAlert::setDate(QDateTime date) {
+inline void Alert::setDate(QDateTime date) {
 	_date = date;
 }
 
-inline QDateTime AAlert::getDate() {
+inline const QDateTime& Alert::getDate() const {
 	return _date;
 }
 
-inline void AAlert::setRepetitive(bool repetitive) {
+inline void Alert::setRepetitive(bool repetitive) {
 	_repetitive = repetitive;
 }
 
-inline bool AAlert::isRepetitive() {
+inline bool Alert::isRepetitive() const {
 	return _repetitive;
 }
 
-inline void AAlert::setActive(bool active) {
+inline void Alert::setActive(bool active) {
 	_active = active;
-    emit toggled(_active);
 }
 
-inline bool AAlert::isActive() {
+inline bool Alert::isActive() const {
 	return _active;
 }
 
-inline QString AAlert::name() const {
+inline const QString& Alert::name() const {
 	return _name;
 }
 
-inline QString AAlert::description() const {
+inline const QString& Alert::description() const {
 	return _description;
 }
 
-inline void AAlert::setName(const QString &name) {
+inline void Alert::setName(const QString &name) {
 	_name = name;
-    emit nameChanged(_name);
 }
 
-inline void AAlert::setDescription(const QString &description) {
+inline void Alert::setDescription(const QString &description) {
 	_description = description;
-    emit descriptionChanged(_description);
 }
 
-inline QVector<Feature::AFeature*> AAlert::getFeatures() const {
+inline QVector<Feature::AFeature*> Alert::getFeatures() const {
 	return _features;
 }
 

@@ -1,13 +1,16 @@
 #-------------------------------------------------
-# AlertMe
+# Cronos
 #-------------------------------------------------
 
 CONFIG += qt
+CONFIG += c++14
+
 QT += widgets
 QT += multimedia
-QT += qml quick
+QT += qml
+QT += quick
 
-TARGET = alertme
+TARGET = Cronos
 TEMPLATE = app
 
 DESTDIR = bin
@@ -21,28 +24,26 @@ unix {
     QMAKE_CXXFLAGS += -Werror
 }
 
-QMAKE_CXXFLAGS += -std=c++11
+DEFINES *= QT_USE_QSTRINGBUILDER
 
 QMAKE_CLEAN = gen/* ui/include/* bin/*
 
 SOURCES += src/Main.cpp \
-    src/core/AAlert.cpp \
-	src/core/AlertManager.cpp \
-        src/core/features/Sound.cpp \
-	src/core/TickTimer.cpp \
+    src/core/Alert.cpp \
+    src/core/AlertManager.cpp \
+    src/core/features/Sound.cpp \
     src/core/features/Notification.cpp \
     src/ui/ManageDialog.cpp \
-    src/model/AlertModel.cpp
+    src/model/AlertModel.cpp \
 
 HEADERS  += \
-    inc/core/AAlert.hpp \
-	inc/core/AlertManager.hpp \
-        inc/core/features/Sound.hpp \
-	inc/core/TickTimer.hpp \
-        inc/core/features/AFeature.hpp \
+    inc/core/Alert.hpp \
+    inc/core/AlertManager.hpp \
+    inc/core/features/Sound.hpp \
+    inc/core/features/AFeature.hpp \
     inc/core/features/Notification.hpp \
     inc/ui/ManageDialog.hpp \
-    inc/model/AlertModel.hpp
+    inc/model/AlertModel.hpp \
 
 FORMS    += \
     ui/ManageDialog.ui
@@ -61,3 +62,7 @@ desktop.path += /usr/share/alertme/
 INSTALLS += target
 INSTALLS += icon
 INSTALLS += desktop
+
+#-- Documentation building custom target
+doc.commands = doxygen Doxyfile
+QMAKE_EXTRA_TARGETS += doc
